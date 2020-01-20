@@ -4,13 +4,16 @@
   "description": "Scrapping Website Anime from node",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Izzudin",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.1",
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
     "fs": "^0.0.1-security"
   }
 }

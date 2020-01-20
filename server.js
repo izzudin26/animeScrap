@@ -1,11 +1,10 @@
 const animeindo = require('./controller/animeindoController')
 const express = require('express')
 const router = express.Router()
-const port = 3000
+const port = process.env.PORT || 3000
 const app = express()
 const bodyparser = require('body-parser')
 
-// animeindo.urlVideo('https://animeindo.to/boruto-naruto-next-generations-episode-38/')
 
 app
     .use(bodyparser.json())
