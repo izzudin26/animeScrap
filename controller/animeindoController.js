@@ -24,7 +24,7 @@ const getTitle = async () => {
             writeData()
             console.log('=================================')
             console.log('DATA HAS SAVE TO completeDB.json')
-            console.log('=================================s')
+            console.log('=================================')
         })
 }
 
@@ -122,14 +122,24 @@ const get = async (req, res) => {
 const getVideo = async (req, res) => {
     let url = req.body.url
     console.log(url)
-    let urls = 'hai'
+    let urls = ''
     await axios.get(url)
         .then(body => {
             let $ = cheerio.load(body.data)
             let urls = $('body').find('iframe').attr('src')
             console.log(urls)
-            res.json({videoUrl: 'https:'+urls})
+            res.json({ videoUrl: 'https:' + urls })
         })
+}
+
+const filtering = (req, res) => {
+    let filterData = []
+    animeDB.forEach(snapshot => {
+        if(snapshot.title.toUpperCase() == req.body.filter.toUpperCase()){
+            filterData.push(snapshot)
+        }
+    })
+   res.json(filterData)
 }
 
 
@@ -139,5 +149,6 @@ module.exports = {
     checkData: checkData,
     getAnimeData: getAnimeData,
     getData: get,
-    getVideo: getVideo
+    getVideo: getVideo,
+    filtering: filtering
 }

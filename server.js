@@ -16,3 +16,4 @@ app
 
 app.get('/', animeindo.getData)
 app.post('/getVideo', animeindo.getVideo)
+app.post('/filter', animeindo.filtering)
