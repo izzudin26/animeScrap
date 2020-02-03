@@ -122,11 +122,10 @@ const get = async (req, res) => {
 const getVideo = async (req, res) => {
     let url = req.body.url
     console.log(url)
-    let urls = ''
     await axios.get(url)
         .then(body => {
             let $ = cheerio.load(body.data)
-            let urls = $('body').find('iframe').attr('src')
+            let urls = $('body').find('iframe').attr('data-src')
             console.log(urls)
             res.json({ videoUrl: 'https:' + urls })
         })
